@@ -1,0 +1,62 @@
+<!--
+    Auto-generated test-site
+-->
+<html>
+<head>
+<title>test page for object fbcontrol</title>
+</head>
+    <script type="text/javascript">
+        function plugin0()
+        {
+            return document.getElementById('plugin0');
+        }
+        plugin = plugin0;
+		
+        function addEvent(obj, name, func)
+        {
+            if (window.addEventListener) {
+                obj.addEventListener(name, func, false); 
+            } else {
+                obj.attachEvent("on"+name, func);
+            }
+        }
+        
+        function load()
+        {
+            addEvent(plugin(), 'FireCompleted', function(x,y){
+                alert('FireCompleted: '+x+":"+y)
+            });
+        }
+		
+        function pluginLoaded() {
+            alert("Plugin loaded!");
+        }
+        
+        function SendMsg()
+        {
+		var v = document.getElementById("msg").value;
+
+          var m=  plugin().SendMessage(55,v);
+		  alert(m);
+        }
+        
+        function Say()
+        {
+		var v = document.getElementById("msg").value;
+            plugin().Say(v);
+        }
+        
+    </script>
+	
+<body onload="load()">
+
+<object id="plugin0" type="application/x-axsamplectrl" width="500" height="300">
+    <param name="onload" value="pluginLoaded" />
+</object><br />
+<a href="#" onclick="">Msg:</a>
+<input type="text" id="msg"></input>
+<br/>
+<a href="#" onclick="javascript:SendMsg()">SendMsg</a> <br />
+<a href="#" onclick="javascript:Say()">Say</a> <br />
+</body>
+</html>
